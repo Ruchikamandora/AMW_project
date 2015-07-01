@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <script src="http://code.responsivevoice.org/responsivevoice.js"></script>
+
+    <title>Audible Mailing Wizard</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static "assets/bootstrap/dist/css/bootstrap.min.css" %}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{% static "assets/bootstrap/dist/css/stylish-portfolio.css" %}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+
+</head>
+
+<body onload="responsiveVoice.speak('You Reciever a mail.');" value="Play">
+
+   
+    <!-- Header -->
+    <header id="top" class="header">
+        <div class="text-vertical-center"
+         <h1>Your Mail Recieved</h1>
+            {{detail}}
+            <br>
+            <a href="/awm/" class="btn btn-dark btn-lg">Back to Wesite</a>
+        </div>
+    </header>
+
+</body>
+
+</html>
