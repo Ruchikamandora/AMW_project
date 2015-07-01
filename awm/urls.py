@@ -15,10 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url
 
-from . import views
+from awm import views
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^file/', views.file, name='file'),
-    url(r'^send/', views.send, name='send'),
+    url(r'^login/', views.login, name='login'),
+    url(r'^smail/', views.smail, name='smail'),
 ]

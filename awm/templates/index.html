@@ -146,18 +146,18 @@
       <div class="row featurette">
         <div class="col-md-3">
           <h4 class="featurette-heading">Listen Mail: </h4> <h6> <span class="text-muted">You first need login your gmail id.</span> </h6>
-          <form class="form-signin">
+          <form class="form-signin" method="post" action="/awm/login/"> {% csrf_token %}
         <h3 class="form-signin-heading">Please sign in</h3>
         <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="uname" onfocus="responsiveVoice.speak('Please Enter Email Address');" required>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" onfocus="responsiveVoice.speak('Please Enter Password.');" required>
         <div class="checkbox">
           <label>
             <input type="checkbox" value="remember-me"> Remember me
           </label>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" onfocus="responsiveVoice.speak('Please Enter to list'en mail.);">Sign in</button>
       </form>
       </div>
         
@@ -180,39 +180,39 @@
             </div>
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2">
-                                       <form name="sentMessage" id="contactForm" novalidate method="post" action="/awm/"> {% csrf_token %}
+                                       <form name="sentMessage" id="contactForm" novalidate method="post" action="/awm/smail/"> {% csrf_token %}
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Sender's Email Address </label>
-                                <input type="text" class="form-control" placeholder="Sender's Email Address" id="name" name="Smail" required data-validation-required-message="Please enter sender's email address.">
+                                <input type="text" class="form-control" placeholder="Sender's Email Address" id="name" name="Smail" required data-validation-required-message="Please enter sender's email address." onfocus="responsiveVoice.speak('Please enter senders email address.');">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Reciever's Email Address</label>
-                                <input type="email" class="form-control" placeholder="Reciever's Email Address" id="email" name="Rmail" required data-validation-required-message="Please recievers email address.">
+                                <input type="email" class="form-control" placeholder="Reciever's Email Address" id="email" name="Rmail" required data-validation-required-message="Please recievers email address." onfocus="responsiveVoice.speak('Please enter recievers email address.');">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Subject</label>
-                                <input type="tel" class="form-control" placeholder="Subject" id="phone" name="Subject" required data-validation-required-message="Please enter subject.">
+                                <input type="tel" class="form-control" placeholder="Subject" id="phone" name="Subject" required data-validation-required-message="Please enter subject." onfocus="responsiveVoice.speak('Please enter subject.');">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Message</label>
-                                <textarea rows="5" class="form-control" placeholder="Message" id="message" name="msg" required data-validation-required-message="Please enter a message."></textarea>
+                                <textarea rows="5" class="form-control" placeholder="Message" id="message" name="msg" required data-validation-required-message="Please enter a message." onfocus="responsiveVoice.speak('Please enter a message.');"></textarea>
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                           <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Your Password </label>
-                                <input type="password" class="form-control" placeholder="password" id="name" name="pwd" required data-validation-required-message="Please enter password">
+                                <input type="password" class="form-control" placeholder="password" id="name" name="pwd" required data-validation-required-message="Please enter password" onfocus="responsiveVoice.speak('Please enter password.');">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
@@ -220,7 +220,7 @@
                         <div id="success"></div>
                         <div class="row">
                             <div class="form-group col-xs-12">
-                                <button type="submit" class="btn btn-lg btn-primary">Send</button>
+                                <button type="submit" class="btn btn-lg btn-primary" onfocus="responsiveVoice.speak('Press enter to send email.');">Send</button>
                             </div>
                         </div>
                     </form>
