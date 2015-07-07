@@ -17,7 +17,7 @@
   </head>
 <!-- NAVBAR
 ================================================== -->
-  <body onload="responsiveVoice.speak('Welcome to Audible Mailing Wizard! A great website for audible mailing. Say, Send Mail, to send mail through voice. Say, List Mail, to listen recieved mail to your gmail account. Say, Help Section, to have more assistance.');" value="Play">
+  <body onload="responsiveVoice.speak('Welcome to Audible Mailing Wizard! A great website for audible mailing. Say, Send Mail section, to got to send mail section. Say, Listen Mail section, to listen mail to your gmail account. Say, Help Section, to have more assistance.');" value="Play">
     <div class="navbar-wrapper">
       <div class="container">
 
@@ -183,36 +183,35 @@
                                        <form name="sentMessage" id="contactForm" novalidate method="post" action="/awm/smail/"> {% csrf_token %}
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
-                                <label>Sender's Email Address </label>
-                                <input type="text" class="form-control" placeholder="Sender's Email Address" id="name" name="Smail" required data-validation-required-message="Please enter sender's email address." onfocus="responsiveVoice.speak('Please enter senders email address.');">
+                                <label for="inputEmail" class="sr-only">Sender's Email Address </label>
+                                <input type="email" class="form-control" placeholder="Sender's Email Address" id="email" name="Smail" onfocus="responsiveVoice.speak('Please enter senders email address.');" required>
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
-                                <label>Reciever's Email Address</label>
-                                <input type="email" class="form-control" placeholder="Reciever's Email Address" id="email" name="Rmail" required data-validation-required-message="Please recievers email address." onfocus="responsiveVoice.speak('Please enter recievers email address.');">
-                                <p class="help-block text-danger"></p>
+                                <label for="inputEmail" class="sr-only">Reciever's Email Address</label>
+                                <input type="email" class="form-control" placeholder="Reciever's Email Address" id="email" name="Rmail" onfocus="responsiveVoice.speak('Please enter recievers email address.');" required></p>
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Subject</label>
-                                <input type="tel" class="form-control" placeholder="Subject" id="phone" name="Subject" required data-validation-required-message="Please enter subject." onfocus="responsiveVoice.speak('Please enter subject.');">
+                                <input type="tel" class="form-control" placeholder="Subject" id="phone" name="Subject" onfocus="responsiveVoice.speak('Please enter subject.');" required>
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Message</label>
-                                <textarea rows="5" class="form-control" placeholder="Message" id="message" name="msg" required data-validation-required-message="Please enter a message." onfocus="responsiveVoice.speak('Please enter a message.');"></textarea>
+                                <textarea rows="5" class="form-control" placeholder="Message" id="message" name="msg" onfocus="responsiveVoice.speak('Please enter a message.');" required></textarea>
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                           <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
-                                <label>Your Password </label>
-                                <input type="password" class="form-control" placeholder="password" id="name" name="pwd" required data-validation-required-message="Please enter password" onfocus="responsiveVoice.speak('Please enter password.');">
+                                <label for="inputPassword" class="sr-only">Your Password </label>
+                                <input type="password" class="form-control" placeholder="password" id="name" name="pwd" onfocus="responsiveVoice.speak('Please enter password.');" required>
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
@@ -234,8 +233,11 @@
 <section id="HelpSection">
       <div class="row featurette">
         <div class="col-md-7">
-          <h2 class="featurette-heading">Help Section <span class="text-muted">Checkmate.</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+          <h2 class="featurette-heading">Help Section </h2>
+          <button type="submit" class="btn btn-lg btn-primary" onclick="responsiveVoice.speak('Say send mail section, to go to send mail section, and say send mail, to put cursor on the mailing form.Say listen mail section, to go to listen mail section, and say listen mail, to enter email id of your gmail account.Say Home, to go to top.');">Play</button>
+          <p class="lead">Say "send mail section" to go to send mail section and say "send mail" to put cursor on the mailing form.<br>
+            Say "listen mail section" to go to listen mail section and say "listen mail" to enter email id of your gmail account.<br>
+           Say "Home" to go to top. </p>
         </div>
         <div class="col-md-5">
           <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">

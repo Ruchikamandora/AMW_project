@@ -26,28 +26,31 @@ def index(request):
 	return render_to_response('index.html')
 @csrf_exempt 
 def smail(request):
-	if request.POST:
-		gmail_user = request.POST.get('Smail')
-		gmail_pwd = request.POST.get('pwd')
-		FROM = gmail_user
-		TO = request.POST.get('Rmail')
-		SUBJECT = request.POST.get('Subject')
-		TEXT = request.POST.get('msg')
-		datavoice = 'You are sening mail to, :' + TO + ', from your email address, :' + gmail_user + ', subject is, :' + SUBJECT + ', and the Message is,:' + TEXT + '. '
-		Message = """\From: %s\nTo: %s\nSubject: %s\n\n%s""" % (FROM, TO, SUBJECT, TEXT)
-		server = smtplib.SMTP("smtp.gmail.com", 587)
-		server.ehlo()
-		server.starttls()
-		server.login(gmail_user, gmail_pwd)
-		server.sendmail(FROM, TO, Message)
-		server.close()
-		engine = pyttsx.init()
-		rate = engine.getProperty('rate')
-		engine.setProperty('rate', rate-100)
-		engine.say(datavoice)
-		engine.runAndWait()
-		return render_to_response('sentmail.html')
-	return HttpResponse('failedmail.html')
+	try:
+		if request.POST:
+			gmail_user = request.POST.get('Smail')
+			gmail_pwd = request.POST.get('pwd')
+			FROM = gmail_user
+			TO = request.POST.get('Rmail')
+			SUBJECT = request.POST.get('Subject')
+			TEXT = request.POST.get('msg')
+			datavoice = 'You are sening mail to, :' + TO + ', from your email address, :' + gmail_user + ', subject is, :' + SUBJECT + ', and the Message is,:' + TEXT + '. '
+			Message = """\From: %s\nTo: %s\nSubject: %s\n\n%s""" % (FROM, TO, SUBJECT, TEXT)
+			server = smtplib.SMTP("smtp.gmail.com", 587)
+			server.ehlo()
+			server.starttls()
+			server.login(gmail_user, gmail_pwd)
+			server.sendmail(FROM, TO, Message)
+			server.close()
+			engine = pyttsx.init()
+			rate = engine.getProperty('rate')
+			engine.setProperty('rate', rate-100)
+			engine.say(datavoice)
+			engine.runAndWait()
+			return render_to_response('sentmail.html')
+	
+	except:
+		return render_to_response('SMError.html')
 
 
 @csrf_exempt 
@@ -63,14 +66,14 @@ def login(request):
 		msrvr.login(username,password)
 		stat,cnt = msrvr.select('inbox')
 		stat,dta = msrvr.fetch(cnt[0], '(BODY.PEEK[TEXT])')
-        detail = dta[0][1]
-        msrvr.close()
-        msrvr.logout()
-        engine = pyttsx.init()
-        rate = engine.getProperty('rate')
-        engine.setProperty('rate', rate-100)
-        engine.say(detail)
-        engine.runAndWait()
-        return render_to_response('listenmail.html', { "detail": detail } )
+		detail = dta[0][1]
+		msrvr.close()
+		msrvr.logout()
+		engine = pyttsx.init()
+		rate = engine.getProperty('rate')
+		engine.setProperty('rate', rate-100)
+		engine.say(detail)
+		engine.runAndWait()
+		return render_to_response('listenmail.html', { "detail": detail } )
 
 	
