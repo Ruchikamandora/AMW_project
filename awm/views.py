@@ -59,21 +59,24 @@ def file(request):
 
 @csrf_exempt 
 def login(request):
-	if request.POST:
-		msrvr = imaplib.IMAP4_SSL('imap.gmail.com',993)
-		username = request.POST.get('uname')
-		password = request.POST.get('password')
-		msrvr.login(username,password)
-		stat,cnt = msrvr.select('inbox')
-		stat,dta = msrvr.fetch(cnt[0], '(BODY.PEEK[TEXT])')
-		detail = dta[0][1]
-		msrvr.close()
-		msrvr.logout()
-		engine = pyttsx.init()
-		rate = engine.getProperty('rate')
-		engine.setProperty('rate', rate-100)
-		engine.say(detail)
-		engine.runAndWait()
-		return render_to_response('listenmail.html', { "detail": detail } )
+	try:
+		if request.POST:
+			msrvr = imaplib.IMAP4_SSL('imap.gmail.com',993)
+			username = request.POST.get('uname')
+			password = request.POST.get('password')
+			msrvr.login(username,password)
+			stat,cnt = msrvr.select('inbox')
+			stat,dta = msrvr.fetch(cnt[0], '(BODY.PEEK[TEXT])')
+			detail = dta[0][1]
+			msrvr.close()
+			msrvr.logout()
+			engine = pyttsx.init()
+			rate = engine.getProperty('rate')
+			engine.setProperty('rate', rate-100)
+			engine.say(detail)
+			engine.runAndWait()
+			return render_to_response('listenmail.html', { "detail": detail } )
+	except:
+		return render_to_response('LMError.html')
 
 	

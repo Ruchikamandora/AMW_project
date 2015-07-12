@@ -1,6 +1,5 @@
 
-from dragonfly import (Grammar, AppContext, MappingRule, Dictation,
-                       Key, Text)
+from dragonfly import (Grammar, AppContext, MappingRule, Key)
 from dragonfly.actions.action_mouse import Mouse
 
 #---------------------------------------------------------------------------
@@ -24,8 +23,8 @@ example_rule = MappingRule(
     mapping={          # The mapping dict: spec -> action.
              "save [file]":            Key("c-s"),
              "save [file] as":         Key("a-f, a"),
-             "save [file] as <text>":  Key("a-f, a/20") + Text("%(text)s"),
-             "find <text>":            Key("c-f/20") + Text("%(text)s\n"),
+             #"save [file] as <text>":  Key("a-f, a/20") + Text("%(text)s"),
+             #"find <text>":            Key("c-f/20") + Text("%(text)s\n"),
              "start is":               Key("c-a"),
              "start now":                  Key("c-o"),
              "a":             Key("a"),
@@ -62,10 +61,12 @@ example_rule = MappingRule(
              "Help Section":     Key("end"),
              "send mail":        Mouse("(0.4, 0.17), left"),
              "Play":             Mouse("(0.05, 0.4), left"),
-             
+             "Go to top":             Key("end") + Mouse("(0.95, 0.89), left"),
+             "Go back":          Mouse("(0.4, 0.4), left"),
+             "Back to website":  Mouse("(0.5, 0.67), left"),
             },
     extras=[           # Special elements in the specs of the mapping.
-          Dictation("text"),
+          #Dictation("text"),
            ],
     )
 
